@@ -1,5 +1,7 @@
 # Adam-Rebeca-Emilia
+
 GPS
+
 Description
 
 This is an updated GPS module that can used with ardupilot mega v2. This GPS module uses the latest technology to give the best possible position information, allowing for better performance with your Ardupilot or other Multirotor control platform. You may require to configure this module for use with your flight controller (MultiWii Copter I2C GPS board requires 115200 baud). You will require a USB to FTDI adaptor board to do this. Please note that this module ships with defualt settings and a buad rate of 38400.
