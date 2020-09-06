@@ -1,33 +1,9 @@
 # Adam-Rebeca-Emilia
 
-GPS
+Aparat de masurat temperatura
 
-Description
-
-This is an updated GPS module that can used with ardupilot mega v2. This GPS module uses the latest technology to give the best possible position information, allowing for better performance with your Ardupilot or other Multirotor control platform. You may require to configure this module for use with your flight controller (MultiWii Copter I2C GPS board requires 115200 baud). You will require a USB to FTDI adaptor board to do this. Please note that this module ships with defualt settings and a buad rate of 38400.
-
-
-
-Specification
-
-• Standalone GPS receiver
-
-• Under 1 second time-to-first-fix for hot and aided starts
-
-• SuperSense ® Indoor GPS: -162 dBm tracking sensitivity
-
-• Anti-jamming technology
-
-• Support SBAS (WAAS, EGNOS, MSAS, GAGAN)
-
-• U-blox 6 50 channel positioning engine with over 2 million effective correlators
-
-• 5Hz position update rate
-
-• Operating temperature range: -40 TO 85°C
-
-• UART TTL socket
-
-• EEprom to store settings
-
-• Build in 18X18mm GPS antenna
+Cu ajutorul microcontroller-ului PIC16F687 am realizat un aparat de masura a temperaturii.
+Pentru acest proiect am mai folosit un circuit integrat LM7805, care este un stabilizator de tensiune liniar, nereglabil, 3 rezistente, 2 condensatoare, un LED ce reprezinta starea de ON sau OFF(aprins in starea de ON), o baterie de 9V, un display BCD 4X7SEG ce afiseaza temperatura, care are rolul de reprezentare precisa si rotunjire a cantitatilor zecimale, precum si usurinta sa de conversie in reprezentari lizibile de om, un intrerupator de alimentare, o siguranta de 1A care are rolul de a proteja circuitul prin intreruperea lui in cazul in care circuitul depaseste un anumit timp o valoare data si nu in ultimul rand senzorul de temperatura, un termocuplu care are rolul de masurare a temperaturii, el functioneaza pe baza efectului Seebeck care conduce la formarea unei diferente de potential electric pe baza unei diferente de potential termic. Termocuplurile sunt utile pentru ca pot fi integrate in masini automate si pot masura o gama larga de temperaturi, limitarea lor principala fiind precizia. Termocuplul meu are rezistenta de 10k si temperatura de lucru cuprinsa intre -40 si 105 grade.
+Schema electrica a proiectului am realizat-o in programul Proteus 7 Profesional, iar pentru programarea circuitului am utilizat programul MikroC Pro for PIC V6.6.1 folosind limbajul C.
+Am inceput programarea circuitului cu declararea unor variabile de salvare a valorii intregi fara semn a portii analogice pentru senzor, cat si a valorii scalare pentru senzor, unei variabile intregi fara semn pentru senzor in domeniul tensiunii de lucru si declararea unei valori de calibrare.
+Functia main contine declararea variabilelor de salvare a valorilor fractionate a valorii analogice, ce sunt folosite pentru afisare. Urmatorul pas este atribuirea valorilor in hex pentru afisarea numerelor de la 0 la 9 pentru cele 2 segmente, cat si pentru afisarea punctelor si a gradelor. Urmeaza declararea variabilelor analogice pentru cea mai mica si cea mai mare  valoare si dezactivarea functiei de comparator. Mai departe am declarat intrarile portilor analogice si iesirile digitale ale portilor. Am incrementat valorile portilor de iesire digitala cu 0. Urmeaza o functie while care da start programului si contine incrementarea si scalarea variabilei intregi fara semn a senzorului de temperatura, declararea valorii de calibrare si calculul valorii intregi pentru temperatura si functia de extragere si salvare a celor 4 biti din valoarea variabilei scalate analogice. Ultimul pas este de incrementare a portii C cu valoarea segmentului corespunzator fiecarui bit din cei 4 incepand de la stanga la dreapta a afisajului si aprinderea si stingerea display-ului dupa un delay de 5ms.
